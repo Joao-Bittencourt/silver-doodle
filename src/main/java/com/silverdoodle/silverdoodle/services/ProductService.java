@@ -2,6 +2,7 @@ package com.silverdoodle.silverdoodle.services;
 
 import com.silverdoodle.silverdoodle.repositories.ProductRepository;
 import com.silverdoodle.silverdoodle.models.Product;
+import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,10 @@ public class ProductService {
 
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
+    }
+    
+    @Transactional
+    public Product save(Product productModel) {
+        return productRepository.save(productModel);
     }
 }
